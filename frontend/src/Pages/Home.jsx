@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Form from "../Components/Form";
 import List from "../Components/List";
+import { API_URL } from "../config";
 
 function Home() {
   const [tasks, setTasks] = useState([]);
@@ -12,7 +13,7 @@ function Home() {
   const getTasks = async () => {
     if (!userInfo) return;
     try {
-      const res = await fetch("http://localhost:5000/tasks", {
+      const res = await fetch(`${API_URL}/tasks`, {
         headers: {
           Authorization: `Bearer ${userInfo.token}`
         }

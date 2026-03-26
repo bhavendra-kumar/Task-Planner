@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { API_URL } from "../config";
 
 function List({ tasks, getTasks, token }) {
   const [loadingId, setLoadingId] = useState(null);
@@ -7,7 +8,7 @@ function List({ tasks, getTasks, token }) {
   const deleteTask = async (id) => {
     setLoadingId(id);
     try {
-      await fetch(`http://localhost:5000/tasks/${id}`, {
+      await fetch(`${API_URL}/tasks/${id}`, {
         method: "DELETE",
         headers: {
           "Authorization": `Bearer ${token}`
@@ -25,7 +26,7 @@ function List({ tasks, getTasks, token }) {
   const toggleComplete = async (id) => {
     setTogglingId(id);
     try {
-      await fetch(`http://localhost:5000/tasks/${id}`, {
+      await fetch(`${API_URL}/tasks/${id}`, {
         method: "PUT",
         headers: {
           "Authorization": `Bearer ${token}`

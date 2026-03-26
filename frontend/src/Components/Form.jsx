@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { API_URL } from "../config";
 
 function Form({ getTasks, token }) {
   const [task, setTask] = useState("");
@@ -13,7 +14,7 @@ function Form({ getTasks, token }) {
 
     setLoading(true);
     try {
-      await fetch("http://localhost:5000/tasks", {
+      await fetch(`${API_URL}/tasks`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
